@@ -237,8 +237,8 @@ def _page_url(url_no_query: str, params: dict) -> str:
 
     Measured against api.github.com on 2026-10-13: a space in a carried value is `+`, while
     every other reserved character is percent-encoded (`:` → `%3A`, `/` → `%2F`, `,` → `%2C`),
-    so values go through :func:`urllib.parse.quote_plus` rather than :func:`urllib.parse.quote`
-    (see issue #650). Whichever spelling the request used, the link spells a space `+`.
+    so values go through :func:`urllib.parse.quote_plus` rather than :func:`urllib.parse.quote`.
+    Whichever spelling the request used, the link spells a space `+`.
     """
     q = "&".join(f"{k}={quote_plus(str(v), safe='')}" for k, v in params.items())
     return f"<{url_no_query}?{q}>"
